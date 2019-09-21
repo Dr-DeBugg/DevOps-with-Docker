@@ -1,0 +1,7 @@
+FROM node:10
+
+COPY . .
+WORKDIR frontend-example-docker-master/
+RUN node -v && npm -v
+ENV API_URL=http://localhost:8000
+CMD [ "npm", "start" ]

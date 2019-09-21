@@ -1,0 +1,35 @@
+version: '3.5' 
+
+services: 
+
+    db:
+      image: postgres
+      restart: unless-stopped
+      volumes:
+       - ./database:/var/lib/postgresql/data
+      environment:
+        - POSTGRES_PASSWORD=example
+
+    backend: 
+      build: /home/leo/Desktop/devOpsDocker/1/1.11/teht/
+      ports:
+        - 8000:8000
+      environment:
+        - REDIS=redis
+        - FRONT_URL=http://localhost:5000
+        - DB_USERNAME=postgres
+        - DB_PASSWORD=example
+        - DB_HOST=db
+      depends_on: 
+         - db
+
+    frontend: 
+      build: /home/leo/Desktop/devOpsDocker/1/1.10/teht/
+      ports:
+        - 5000:5000
+      environment:
+        - API_URL=http://localhost:8000
+
+    redis: 
+      image: redis
+

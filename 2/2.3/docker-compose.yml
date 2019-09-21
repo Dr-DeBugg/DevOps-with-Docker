@@ -1,0 +1,15 @@
+version: '3.5' 
+
+services: 
+
+    frontend: 
+      build: /home/leo/Desktop/devOpsDocker/1/1.10/teht/
+      ports:
+        - 5000:5000
+      container_name: front
+
+    backend: 
+      build: /home/leo/Desktop/devOpsDocker/1/1.11/teht/
+      ports:
+        - 8000:8000
+      container_name: back

@@ -1,0 +1,10 @@
+version: '3.5' 
+
+services: 
+
+    up: 
+      image: devopsdockeruh/ports_exercise
+      build: . 
+      ports:
+        - 80:80
+      container_name: two_point_two
